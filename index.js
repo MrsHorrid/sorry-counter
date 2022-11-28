@@ -10,9 +10,17 @@ let nameP = ''
 meme.style.display = `none`
 
 nameEnter.addEventListener("click", function(){
-    nameP = nameBad.value
-    nameBad.placeholder = `the name ${nameP} has been entered`
-    nameBad.value = ''
+    if (nameBad.value === '')
+    {
+        nameBad.placeholder = "Please enter a name"
+    }
+    else
+    {
+        nameP = nameBad.value
+        nameBad.placeholder = `the name ${nameP} has been entered`
+        nameBad.value = ''
+    }
+
     
 })
 
@@ -23,15 +31,17 @@ let hasReached = false
 
 sorryBtn.addEventListener("click", function(){
     
-    if (sorry === 20)
+    if (sorry == 20)
     {
         hasReached = true
         sorry = 20
         badpName.innerHTML = ` ${nameP} Has been very bad by saying sorry`
         meme.style.display = 'block'
     }
-    else
+    
+    else 
     {
+        
         sorry += 1;
         sorryCount.textContent = sorry
     }
@@ -41,4 +51,7 @@ sorryBtn.addEventListener("click", function(){
 resetBtn.addEventListener("click", function(){
     sorry = 0;
     sorryCount.textContent = sorry
+    meme.style.display = `none`
+    badpName.innerHTML = ''
+    nameBad.placeholder = 'Who is being bad by saying sorry today?'
 })
